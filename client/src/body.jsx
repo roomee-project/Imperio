@@ -7,8 +7,8 @@ import LoginForm from './components/LoginForm.jsx';
 import Chat from './components/Chat.jsx';
 
 const Body = (props) => (
-    <Switch>
-      <div className="container-fluid w-100">
+    <div className="container-fluid w-100">
+      <Switch>
         {/* <Route path="/map" exact component={MapContainer} /> */}
         <Route path="/townhall" exact component={TownHallContainer} />
         <Route path="/" exact component={MapContainer} />
@@ -16,8 +16,8 @@ const Body = (props) => (
         <Route path="/chat" exact component={Chat} />
         <Route path="/logout" exact component={MapContainer} />
         <Route path="/zipform" exact component={ZipForm} />
-      </div>
-    </Switch>
+      </Switch>
+    </div>
 )
 //<Route exact path="/" component={App} />
 

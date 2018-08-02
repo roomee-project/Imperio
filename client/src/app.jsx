@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import Nav from './nav.jsx';
-import Routes from './body.jsx';
+import Body from './body.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,8 +38,10 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <Router>
-          <Nav isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
-          <Body isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+          <div>
+            <Nav isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+            <Body isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+          </div>
         </Router>
       </div>
     )}
