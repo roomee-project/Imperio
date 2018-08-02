@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy({
         .then(userRowID => {
           if (userRowID === false) {
             //the user does not exist, create an entry
-            db.createUser(profile.id, profile.displayName)
+            db.createUser(profile.id, profile.name.givenName)
               .then(newUserRowID => done(null, newUserRowID))
               .catch(err => console.log(err));
           } else {
