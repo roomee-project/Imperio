@@ -40,9 +40,9 @@ export default class MapContainer extends Component {
   }
 
   mapHandler = (event) => {
-    console.log('event.target.dataset.name is', event.target.dataset.name);
-
-    this.setState({selectedState: event.target.dataset.name})
+    // console.log('event.target.dataset.name is', event.target.dataset.name);
+    const stateClicked = event.target.dataset.name;
+    // this.setState({selectedState: event.target.dataset.name})
 
     axios.post('/reps', {
       location: event.target.dataset.name,
@@ -50,10 +50,14 @@ export default class MapContainer extends Component {
     })
     .then(response => {
       if (typeof(response.data) === 'String') {
+        // what case does this handle? the else block is getting called when a user clicks on a state
+        // this is likely called when a user enters in their zipCode to search
         console.log(response.data);
       } else {
-        console.log(response.data);
-        this.setState({ data: response.data })
+        this.setState({ 
+          selectedState: stateClicked,
+          data: response.data 
+        });
       }
     })
   };
