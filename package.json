@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/chrisamurao/HRR32-Rubeus#readme",
   "dependencies": {
+    "@material-ui/core": "^1.4.2",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",

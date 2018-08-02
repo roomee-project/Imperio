@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
+
 export default class LoginForm extends Component {
 
   constructor(props) {
@@ -61,7 +62,7 @@ export default class LoginForm extends Component {
             placeholder="password"
             onChange={this.setPassword} />
           <br></br>
-          <button onClick={this.handleLogin}>login</button>
+          <Button variant="contained" color="primary" onClick={this.handleLogin}>login</Button>
           <div>
             <a href="auth/google">Log in with Google</a>
           </div>
