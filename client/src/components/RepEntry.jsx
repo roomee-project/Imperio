@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Facebook = (props) => {return (<a href={`https://www.facebook.com/${props.id}`}><i className="fab fa-facebook-square"></i></a>)}
+const Facebook = (props) => {return (<a href={`https://www.facebook.com/${props.id}`} target="_blank"><i className="fab fa-facebook-square"></i></a>)}
 
-const Youtube = (props) => { return (<a href={`https://www.youtube.com/channel/${props.id}`}><i className="fab fa-youtube-square"></i></a>) }
+const Youtube = (props) => { return (<a href={`https://www.youtube.com/channel/${props.id}`} target="_blank"><i className="fab fa-youtube-square"></i></a>) }
 
-const Twitter = (props) => { return (<a href={`https://www.twitter.com/${props.id}`}><i className="fab fa-twitter-square"></i></a>) }
+const Twitter = (props) => { return (<a href={`https://www.twitter.com/${props.id}`} target="_blank"><i className="fab fa-twitter-square"></i></a>) }
 
 const RepEntry = props => (
   <div className="card col-md-8" style={{maxWidth: "20rem" }}>
@@ -15,19 +15,18 @@ const RepEntry = props => (
       <h5 className="card-title">{props.rep.title}</h5>
       <p className="card-text">{props.rep.name} <br /> Party: {props.rep.party} </p>
       <p>{props.rep.phones ? props.rep.phones[0] : ''}</p>
-      {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary">Website</a> : ''}
+      <div>
+        {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary btn-xs" target="_blank">Website</a> : ''}
+      </div>
       {props.rep.channels ? props.rep.channels.map(channel => {
         return (
-          <div><span> {channel.type === 'Facebook' ? <Facebook id={channel.id}/> : ''}
-                {channel.type === 'YouTube' ? <Youtube id={channel.id}/> :  ''}
-                {channel.type === 'Twitter' ? <Twitter id={channel.id} /> : ''}
-                </span></div>)
+          <span>
+            <span> {channel.type === 'Facebook' ? <Facebook id={channel.id}/> : ''} </span>
+            <span> {channel.type === 'YouTube' ? <Youtube id={channel.id}/> :  ''} </span>
+            <span> {channel.type === 'Twitter' ? <Twitter id={channel.id} /> : ''} </span>
+          </span>)
         }) : ''}
-
-
     </div>
-
-
   </div>
 )
 
