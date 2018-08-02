@@ -10,7 +10,8 @@ const RepEntry = props => (
   <div className="card col-md-8" style={{maxWidth: "20rem" }}>
 
     <div className="card-body text-center">
-      {props.rep.photoUrl ? <img className="card-img-top" src={props.rep.photoUrl} alt={props.rep.title} /> : ''}
+      {props.rep.photoUrl ? <img className="card-img-top" src={props.rep.photoUrl} width="248" height="273" alt="no image" /> : <img className="card-img-top" src="https://static1.squarespace.com/static/5086f19ce4b0ad16ff15598d/t/5554f9bfe4b0085468ec253e/1431632320881/missing+photo+placeholder.png" width="248" height="273" alt="no image" /> }
+
 
       <h5 className="card-title">{props.rep.title}</h5>
       <p className="card-text">{props.rep.name} <br /> Party: {props.rep.party} </p>
@@ -32,5 +33,8 @@ const RepEntry = props => (
 )
 
 export default RepEntry;
+
+ {/*alt={props.reps.title /> : ''*/}
+
 
 {/* <a href="http://www.website.com" title="Website name"><i style="margin-right: 0.5em; color: #EEEEEE;" class="icon-home icon-4x"></i>Website Link</a> */}
