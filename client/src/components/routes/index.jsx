@@ -19,6 +19,7 @@ const Routes = (props) => (
         {!props.isLoggedIn ? <li><Link to="/login" className="nav-link">Login</Link></li>
             : <a href="/logout" className="nav-link">Logout</a> }
         <li><a href="https://vote.gov/" className= "nav-link" target="_blank">Vote Registration</a></li>
+        <li><Link to="/zipform" className="navbar-brand">Local Reps</Link></li>
       </ul>
     </nav>
 
@@ -29,6 +30,7 @@ const Routes = (props) => (
       <Route path="/login" exact component={LoginForm} />
       <Route path="/chat" exact component={Chat} />
       <Route path="/logout" exact component={MapContainer} />
+      <Route path="/zipform" exact component={ZipForm} />
     </Switch>
 
     </div>

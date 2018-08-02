@@ -58,7 +58,7 @@ export default class ZipForm extends Component {
             type="text"
             value={this.state.zip}
             onChange={e => this.handleChange(e)}
-            placeholder="ZIP code" />
+            placeholder="Enter Zipcode" />
         </form>
         <div
           className="btn btn-primary"
