@@ -65,17 +65,17 @@ export default class MapContainer extends Component {
   render() {
     console.log('render called')
     return (
-      <div className="container">
+      <div className="container-fluid text-center">
         <div>
           {this.state.selectedState ? <h1>Selected: {this.state.selectedState}</h1> : <h1>Select A State!</h1>}
 
         </div>
-        <div className="row text-center">
+        <div className="row mx-auto w-100">
           <USAMap
             onClick={this.mapHandler}
             title={"Choose your state"}
-            width={this.mapDimensions().width * .8}
-            height={this.mapDimensions().height * .8}
+            width={this.mapDimensions().width *1.2}
+            height={this.mapDimensions().height *1.2}
             customize={{[this.state.selectedState]: {fill: colorHelper(this.state.data)}}}
           />
         </div>
