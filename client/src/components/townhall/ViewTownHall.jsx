@@ -49,10 +49,11 @@ export default class ViewTownHall extends Component {
 
         { this.props.questions.length > 0 ? this.props.questions.map((qData, i) =>
           <div key={i} className="container">
-            <div> Question: {qData.question} </div>
-            <div> Answer:   {qData.answer ? qData.answer : 'ANSWER PENDING'} </div>
-            <div> TownHall: {qData.townHallName} </div>
-            <div> Created On: {qData.createDate} </div>
+            <div className="rounded p-3 mb-2 bg-dark text-white">
+            <p> {qData.question} </p></div>
+            <div> <h6>Answer</h6>  <p>  {qData.answer ? qData.answer : 'ANSWER PENDING'} </p></div>
+            <div> <h6>TownHall</h6> <p> {qData.townHallName} </p></div>
+            <div> <h6>Created On</h6> <p> {qData.createDate} </p></div>
           </div>) : ''
         }
 

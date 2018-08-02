@@ -25,15 +25,13 @@ export default class CreateTownHall extends Component {
   render() {
     return (
       <div className="col-sm">
-        <h4>Contribute to A Town Hall. </h4>
-        <h6>Be active in your community.</h6>
-        <button
+        <button className="btn btn-light"
           onClick={()=>{this.setState({userType: 'user'})}}>
-          Change type to User
+          Submit as User
         </button>
-        <button
+        <button className="btn btn-light"
           onClick={()=>{this.setState({userType: 'official'})}}>
-          Change type to Official
+          Submit as Official
         </button>
         {this.renderView()}
 
