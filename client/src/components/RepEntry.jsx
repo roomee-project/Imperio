@@ -11,23 +11,23 @@ const RepEntry = props => (
 
     <div className="card-body text-center">
       {props.rep.photoUrl ? <img className="card-img-top" src={props.rep.photoUrl} alt={props.rep.title} /> : ''}
-      
+
       <h5 className="card-title">{props.rep.title}</h5>
       <p className="card-text">{props.rep.name} <br /> Party: {props.rep.party} </p>
-      <p>{props.rep.phones[0] ? props.rep.phones[0] : ''}</p>
+      <p>{props.rep.phones ? props.rep.phones[0] : ''}</p>
       {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary">Website</a> : ''}
       {props.rep.channels ? props.rep.channels.map(channel => {
         return (
           <div><span> {channel.type === 'Facebook' ? <Facebook id={channel.id}/> : ''}
-                {channel.type === 'YouTube' ? <Youtube id={channel.id}/> :  ''} 
+                {channel.type === 'YouTube' ? <Youtube id={channel.id}/> :  ''}
                 {channel.type === 'Twitter' ? <Twitter id={channel.id} /> : ''}
                 </span></div>)
         }) : ''}
-      
-      
+
+
     </div>
 
-    
+
   </div>
 )
 
