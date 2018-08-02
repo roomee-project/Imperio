@@ -2,7 +2,7 @@ import React from 'react';
 
 const Facebook = (props) => {return (<a href={`https://www.facebook.com/${props.id}`} target="_blank"><i className="fab fa-facebook-square"></i></a>)}
 
-const Youtube = (props) => { return (<a href={`https://www.youtube.com/channel/${props.id}`} target="_blank"><i className="fab fa-youtube-square"></i></a>) }
+const Youtube = (props) => { return (<a href={`https://www.youtube.com/user/${props.id}`}><i className="fab fa-youtube-square"></i></a>) }
 
 const Twitter = (props) => { return (<a href={`https://www.twitter.com/${props.id}`} target="_blank"><i className="fab fa-twitter-square"></i></a>) }
 
@@ -14,6 +14,7 @@ const RepEntry = props => (
 
       <h5 className="card-title">{props.rep.title}</h5>
       <p className="card-text">{props.rep.name} <br /> Party: {props.rep.party} </p>
+
       <p>{props.rep.phones ? props.rep.phones[0] : ''}</p>
       <div>
         {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary btn-xs" target="_blank">Website</a> : ''}

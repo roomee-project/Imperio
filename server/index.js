@@ -81,8 +81,7 @@ app.post('/reps', (req, res, next) => {
 
   apiSearch.searchByZip(locator, (response) => {
     if (response.error) {
-      console.log(response.error);
-      res.send(JSON.stringify('Please enter valid ZIP code.'));
+      res.send(console.log(JSON.stringify('Please enter valid ZIP code.')));
     } else {
       res.status(201);
       console.log(response);
