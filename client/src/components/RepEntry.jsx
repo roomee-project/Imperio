@@ -11,10 +11,10 @@ const RepEntry = props => (
 
     <div className="card-body text-center">
       {props.rep.photoUrl ? <img className="card-img-top" src={props.rep.photoUrl} alt={props.rep.title} /> : ''}
-      
+
       <h5 className="card-title">{props.rep.title}</h5>
       <p className="card-text">{props.rep.name} <br /> Party: {props.rep.party} </p>
-      <p>{props.rep.phones[0] ? props.rep.phones[0] : ''}</p>
+      <p>{props.rep.phones ? props.rep.phones[0] : ''}</p>
       <div>
         {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary btn-xs" target="_blank">Website</a> : ''}
       </div>
@@ -26,11 +26,7 @@ const RepEntry = props => (
             <span> {channel.type === 'Twitter' ? <Twitter id={channel.id} /> : ''} </span>
           </span>)
         }) : ''}
-      
-      
     </div>
-
-    
   </div>
 )
 
