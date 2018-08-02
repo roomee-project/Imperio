@@ -1,3 +1,4 @@
+const log = require('ololog');
 const config = require('./civic.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -19,6 +20,7 @@ passport.use(new GoogleStrategy({
       //if they do, take them to login page, if not, then create their
       //account automatically and then redirect them to login page
       console.log('passport authenticate callback');
+      log(profile);
       db.doesExist(profile.id)
         .then(userRowID => {
           if (userRowID === false) {

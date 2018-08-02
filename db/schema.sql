@@ -43,8 +43,8 @@ CREATE TABLE questions (
 
 -- Insert Some Sample Data Into Users Database
 
-
 INSERT INTO users (userid, username, zip)
+  -- keep in mind that users logged in via Google will not have a zip associated with their account
   VALUES ('testUserID-1', 'testUserName1', 'TestZip1'),
          ('testUserID-2', 'testUserName2', 'TestZip2');
 
