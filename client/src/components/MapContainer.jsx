@@ -58,10 +58,6 @@ export default class MapContainer extends Component {
           selectedState: stateClicked,
           data: response.data
         });
-// =======
-//         console.log(response.data);
-//         this.setState({ data: response.data })
-// >>>>>>> Fixed broken YouTube Link, Map is fully fixed
       }
     })
   };
