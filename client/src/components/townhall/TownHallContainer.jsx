@@ -7,8 +7,8 @@ export default class TownHallContainer extends Component {
   render() {
     return (
       <div className="container">
-        <CreateTownHall />
         <ViewAllTownHalls />
+        <CreateTownHall />
       </div>
     )
   }

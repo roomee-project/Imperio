@@ -71,7 +71,7 @@ export default class UserCreateTownHall extends Component {
 
   render() {
     return (
-      <div className="jumbotron">
+      <div className="jumbotron-fluid">
 
         <form>
           <fieldset>

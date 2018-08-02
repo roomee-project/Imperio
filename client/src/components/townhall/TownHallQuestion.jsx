@@ -14,7 +14,7 @@ export default class TownHallQuestion extends Component {
   //TODO STYLE THIS
   render() {
     return (
-      <div className="container">
+      <div className="col-sm">
         <div>
           Question: {this.state.question}
         </div>

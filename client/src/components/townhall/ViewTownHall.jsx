@@ -45,10 +45,10 @@ export default class ViewTownHall extends Component {
   //render
     render() {
     return (
-      <div>
+      <div className="jumbotron">
 
         { this.props.questions.length > 0 ? this.props.questions.map((qData, i) =>
-          <div key={i}>
+          <div key={i} className="container">
             <div> Question: {qData.question} </div>
             <div> Answer:   {qData.answer ? qData.answer : 'ANSWER PENDING'} </div>
             <div> TownHall: {qData.townHallName} </div>
