@@ -18,6 +18,7 @@ const Routes = (props) => (
         <li><Link to="/chat" className="nav-link">Chat</Link></li>
         {!props.isLoggedIn ? <li><Link to="/login" className="nav-link">Login</Link></li>
             : <a href="/logout" className="nav-link">Logout</a> }
+        <li><a href="https://vote.gov/" className= "nav-link" target="_blank">Vote Registration</a></li>
       </ul>
     </nav>
 
@@ -33,6 +34,7 @@ const Routes = (props) => (
     </div>
   </Router>
 
+ //<Route path="/vote" exact component={() => window.open("https://vote.gov/","_blank")}/>
 )
 //<Route exact path="/" component={App} />
 
