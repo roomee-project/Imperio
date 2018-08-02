@@ -64,7 +64,7 @@ export default class ViewAllTownHalls extends Component {
     } else if (this.state.view === 'post') {
       return (
         <div> 
-          <button onClick={this.returnToList}>Back </button>
+          <button className="btn btn-light" onClick={this.returnToList}>Back </button>
           <ViewTownHall townHallName={this.state.townHall} questions={this.state.questions}/>
         </div>
       )
@@ -73,7 +73,7 @@ export default class ViewAllTownHalls extends Component {
 
   render() {
     return (
-      <div className="col-sm">
+      <div className="jumbotron bg-white">
         <h1 className="display-4"> Open Town Halls </h1>
         {this.renderView()}
       </div>

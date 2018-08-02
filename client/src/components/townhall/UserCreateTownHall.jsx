@@ -71,12 +71,16 @@ export default class UserCreateTownHall extends Component {
 
   render() {
     return (
-      <div className="jumbotron-fluid">
-
+      <div className="jumbotron">
+      <h4>Contribute to a town hall. </h4>
+        <h6>Be active in your community.</h6>
         <form>
           <fieldset>
-            <legend>Ask a Town Hall:</legend>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+              </div>
               <select 
+                className="custom-select"
                 value={this.state.selected}
                 onChange={this.handleSelect}>
                 <option 
@@ -84,12 +88,14 @@ export default class UserCreateTownHall extends Component {
                 </option>
                 {this.state.townHalls.map((hall, i) => <option key={i}>{hall}</option>)}
               </select> <br/>
+              </div>
               <textarea 
+                className="form-control"
                 name="question"
-                placeholder="Enter a Question Here."
+                placeholder="Enter a question here."
                 value={this.state.question}
                 onChange={e => this.handleChange(e)}/><br/>
-            <button
+            <button className="btn btn-light"
               onClick={this.handleSubmit}
             >Submit Question</button>
           </fieldset>

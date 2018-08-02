@@ -38,21 +38,51 @@ export default class OfficialCreateTownHall extends Component {
 
   render() {
     return (
-      <div className="jumbotron">
+      <div className="jumbotron rounded">
         <form>
           <fieldset>
-            <legend>Create a Town Hall:</legend>
-              Title: 
+            <h4>Reach out to the people in your community.</h4>
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Title</span>
+              </div>
+              
               <input 
-              name='title'
+              className="rounded form-control"
+              placeholder="Title"
+              aria-label="Username" 
+              aria-describedby="basic-addon1"
+              value="Title"
+              name="title"
               type="text"
               value={this.state.title}
               onChange={e => this.handleChange(e)}/><br />
-            Email: <input type="text" /><br />
-            Open until: <input type="datetime-local" />
-            <button
+            </div>
+            <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">  
+            <span class="input-group-text" id="basic-addon1" >Email</span>
+            </div>
+            
+             <input 
+                type="text"   
+                className="rounded form-control"
+                placeholder="official@email.com"
+                aria-label="email" 
+                aria-describedby="basic-addon1"
+                /><br />
+             </div>
+             <div class="input-group mb-3 input-group-sm">
+             <div class="input-group-prepend">
+             <span class="input-group-text" id="basic-addon1">Open Until</span>
+             </div>
+            <input 
+            aria-describedby="basic-addon1"
+            className="rounded form-control" 
+            type="datetime-local" />
+           </div>
+            <button className="btn btn-light"
               onClick={this.handleClick}>
-              Submit Town Hall
+              Create Town Hall
             </button>
           </fieldset>
         </form>
