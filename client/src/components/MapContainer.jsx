@@ -54,9 +54,9 @@ export default class MapContainer extends Component {
         // this is likely called when a user enters in their zipCode to search
         console.log(response.data);
       } else {
-        this.setState({ 
+        this.setState({
           selectedState: stateClicked,
-          data: response.data 
+          data: response.data
         });
       }
     })
@@ -68,12 +68,12 @@ export default class MapContainer extends Component {
       <div className="container">
         <div>
           {this.state.selectedState ? <h1>Selected: {this.state.selectedState}</h1> : <h1>Select A State!</h1>}
-          
+
         </div>
         <div className="row text-center">
-          <USAMap 
+          <USAMap
             onClick={this.mapHandler}
-            title={"Choose your state"} 
+            title={"Choose your state"}
             width={this.mapDimensions().width * .8}
             height={this.mapDimensions().height * .8}
             customize={{[this.state.selectedState]: {fill: colorHelper(this.state.data)}}}
