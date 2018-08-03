@@ -31,6 +31,7 @@ bower_components/
 
 ## API KEYS ##
 config/civic.js
+confib/twilio.js
 
 #bundle
 bundle.js
