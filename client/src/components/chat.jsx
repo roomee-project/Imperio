@@ -13,8 +13,12 @@ class Chat extends Component {
             userZip: '',
             message: '',
             messages: [],
+<<<<<<< HEAD
             isLoggedIn: false,
             zipCodeSubmitted: false
+=======
+            isLoggedIn: false
+>>>>>>> to rebase
         };
      
         this.socket = io('localhost:3000');

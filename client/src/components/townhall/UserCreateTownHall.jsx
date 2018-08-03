@@ -19,6 +19,8 @@ export default class UserCreateTownHall extends Component {
       selected: '',
       question: '',
       currentUser: 2,
+      isLoggedIn: false,
+      username:'',
     }
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +32,7 @@ export default class UserCreateTownHall extends Component {
   
   componentDidMount() {
     this.getTownHalls();
+
   }
 
   getTownHalls() {

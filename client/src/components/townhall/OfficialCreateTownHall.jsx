@@ -7,7 +7,8 @@ export default class OfficialCreateTownHall extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      title: ''
+      title: '',
+      isLoggedIn: false
     }
   }
 
