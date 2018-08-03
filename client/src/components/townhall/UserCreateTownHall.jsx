@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import fakeData from './fakeData.js';
+import { BrowserRouter as Link} from 'react-router-dom';
+
 
 //this is a helper stateless component
 // const Options = props => <select value={this.state.selected}>{props.open.map((hall, i) => <option key={i}>{hall}</option>)}</select>;
@@ -19,9 +21,7 @@ export default class UserCreateTownHall extends Component {
       selected: '',
       question: '',
       currentUser: 2,
-      isLoggedIn: false,
-      username:'',
-    }
+    };
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -46,6 +46,7 @@ export default class UserCreateTownHall extends Component {
   handleSubmit(e) {
     //send data to server
     //tell it that you are a user and send it your question and which town hall it is for
+    console.log('yo')
     e.preventDefault();
     this.sendQuestion(this.state.question, this.state.selected)
   }
@@ -71,10 +72,13 @@ export default class UserCreateTownHall extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="jumbotron">
+      {!this.props.isLoggedIn?
+      <h6>Please login first.</h6> :
+      null
+    }
       <h4>Contribute to a town hall. </h4>
         <h6>Be active in your community.</h6>
         <form>
@@ -99,7 +103,12 @@ export default class UserCreateTownHall extends Component {
                 value={this.state.question}
                 onChange={e => this.handleChange(e)}/><br/>
             <button className="btn btn-light"
-              onClick={this.handleSubmit}
+              onClick={
+                this.props.isLoggedIn ?
+                this.handleSubmit()
+                :
+                null//why does refresh happen here
+          }
             >Submit Question</button>
           </fieldset>
         </form>

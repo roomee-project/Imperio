@@ -3,13 +3,11 @@ import CreateTownHall from './CreateTownHall.jsx';
 import ViewAllTownHalls from './ViewAllTownHalls.jsx';
 import ViewTownHall from './ViewTownHall.jsx'
 
-export default class TownHallContainer extends Component {
-  render() {
-    return (
-      <div className="container">
-        <ViewAllTownHalls />
-        <CreateTownHall />
-      </div>
-    )
-  }
-}
+const TownHallContainer = ({isLoggedIn}) => (
+  <div className="container">
+    <ViewAllTownHalls />
+    <CreateTownHall isLoggedIn={isLoggedIn}/>
+  </div>
+);
+
+export default TownHallContainer;

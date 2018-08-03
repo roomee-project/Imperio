@@ -12,10 +12,6 @@ export default class OfficialCreateTownHall extends Component {
     }
   }
 
-  //TODO:
-  //Front-end :Send data to the server.
-  //Server: store data into the database.
-
   handleClick(e) {
     e.preventDefault()
     console.log('handleClick called!')
@@ -40,6 +36,10 @@ export default class OfficialCreateTownHall extends Component {
   render() {
     return (
       <div className="jumbotron rounded">
+        {!this.props.isLoggedIn?
+        <h6>Please login first.</h6> :
+        null
+        }
         <form>
           <fieldset>
             <h4>Reach out to the people in your community.</h4>
@@ -82,7 +82,12 @@ export default class OfficialCreateTownHall extends Component {
             type="datetime-local" />
            </div>
             <button className="btn btn-light"
-              onClick={this.handleClick}>
+              onClick={
+                this.props.isLoggedIn ?
+                this.handleClick
+                :
+                null//why does refresh not happen here
+          }>
               Create Town Hall
             </button>
           </fieldset>
