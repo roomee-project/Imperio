@@ -16,9 +16,10 @@ const RepEntry = props => (
       <h5 className="card-title">{props.rep.title}</h5>
       <p className="card-text">{props.rep.name} <br /> Party: {props.rep.party} </p>
 
-      <p>{props.rep.phones ? props.rep.phones[0] : ''}</p>
+      <p>{props.rep.phones ? <a href={`tel:+${props.rep.phones[0]}`}>{props.rep.phones[0]}</a> : <br></br> }</p>
+      <p>{props.rep.emails ? <a href={`mailto:${props.rep.emails[0]}?Subject=Hello%20Representative`} >{props.rep.emails[0]}</a> : <br></br> }</p>
       <div>
-        {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary btn-xs" target="_blank">Website</a> : ''}
+        {props.rep.urls ? <a href={props.rep.urls[0]} className="btn btn-primary btn-xs" target="_blank">Website</a> : <br></br>}
       </div>
       {props.rep.channels ? props.rep.channels.map(channel => {
         return (
@@ -35,6 +36,8 @@ const RepEntry = props => (
 export default RepEntry;
 
  {/*alt={props.reps.title /> : ''*/}
+{/*props.rep.emails[0]*/}
+{/*props.rep.phones[0]*/}
 
 
 {/* <a href="http://www.website.com" title="Website name"><i style="margin-right: 0.5em; color: #EEEEEE;" class="icon-home icon-4x"></i>Website Link</a> */}
