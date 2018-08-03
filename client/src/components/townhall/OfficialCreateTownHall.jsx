@@ -44,7 +44,7 @@ export default class OfficialCreateTownHall extends Component {
             <h4>Reach out to the people in your community.</h4>
             <div className="input-group input-group-sm mb-3">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon1">Title</span>
+                <span className="input-group-text" id="basic-addon1">Title </span>
               </div>
               
               <input 
@@ -60,7 +60,7 @@ export default class OfficialCreateTownHall extends Component {
             </div>
             <div className="input-group input-group-sm mb-3">
             <div className="input-group-prepend">  
-            <span className="input-group-text" id="basic-addon1" >Email</span>
+            <span className="input-group-text" id="basic-addon1" >Email </span>
             </div>
             
              <input 
@@ -73,7 +73,7 @@ export default class OfficialCreateTownHall extends Component {
              </div>
              <div className="input-group mb-3 input-group-sm">
              <div className="input-group-prepend">
-             <span className="input-group-text" id="basic-addon1">Open Until</span>
+             <span className="input-group-text" id="basic-addon1">Open Until </span>
              </div>
             <input 
             aria-describedby="basic-addon1"

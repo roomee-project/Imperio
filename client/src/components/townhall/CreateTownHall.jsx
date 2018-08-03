@@ -33,7 +33,13 @@ export default class CreateTownHall extends Component {
           onClick={()=>{this.setState({userType: 'official'})}}>
           Submit as Official
         </button>
+        <div className="container jumbotron">
+        <div className="row justify-content-center align-items-center">
+        <div className="col-7 align-self-center">
         {this.renderView()}
+        </div>
+        </div>
+        </div>
 
       </div>
     )

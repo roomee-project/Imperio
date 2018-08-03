@@ -54,10 +54,9 @@ export default class ViewAllTownHalls extends Component {
   renderView () {
     if (this.state.view === 'list') {
       return (
-        <ul className="list-group-flush">
+        <ul className="list-group list-group-flush">
         { this.state.townHalls.length > 0 ? this.state.townHalls.map((hall, i) =>
-          <li className="list-group-item list-group-item-action" key={i}> <span onClick={this.handleClick}>{hall}</span>
-          </li>) : ''}
+          <li onClick={this.handleClick} className="list-group-item list-group-item-action" key={i}>{hall}</li>) : ''}
         </ul>
       )
 

@@ -76,8 +76,8 @@ export default class UserCreateTownHall extends Component {
         <h6>Be active in your community.</h6>
         <form>
           <fieldset>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
               </div>
               <select 
                 className="custom-select"
