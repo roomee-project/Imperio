@@ -9,14 +9,6 @@ const server = require('http').createServer(app);
 const socket = require('socket.io');
 const io = socket(server);
 
-//twilio dependency
-const twilio = require('twilio');
-const secret = require('../config/twilio.js');
-//for tunneling to localhost to test twilio
-const ngrok = require('ngrok');
-// const url = await ngrok.connect(3000);
-
-
 //Database Dependences Below
 const db = require('../db/users.js');
 const townhalls = require('../db/townhalls.js');
@@ -131,47 +123,6 @@ app.get('/checkuser', utils.authCheck, (req, res) => {
   console.log('passed authcheck')
   req.user ? res.send(req.user) : res.send('whoops');
 });
-
-/******************************************************************************
-Name:  Twilio auth and token, instance for outbound calls
-Description:  implements ability to create outbound calls from browser
-*******************************************************************************/
-// const ClientCapability = twilio.jwt.ClientCapability;
-// const VoiceResponse = twilio.twiml.VoiceResponse;
-// const TWILIO_ACCOUNT_SID = secret.TWILIO_ACCOUNT_SID;
-// const TWILIO_AUTH_TOKEN = secret.TWILIO_AUTH_TOKEN;
-// const TWILIO_TWIML_APP_SID = secret.TWILIO_TWIML_APP_SID;
-// const TWILIO_NUMBER = secret.TWILIO_NUMBER;
-
-// Generate a Twilio Client capability token
-// app.get('/token', (req, res) => {
-//   const capability = new ClientCapability({
-//     accountSid: process.env.TWILIO_ACCOUNT_SID,
-//     authToken: process.env.TWILIO_AUTH_TOKEN,
-//   });
-
-//   capability.addScope(
-//     new ClientCapability.OutgoingClientScope({
-//       applicationSid: process.env.TWILIO_TWIML_APP_SID})
-//   );
-
-//   const token = capability.toJwt();
-
-//   // Include token in a JSON response
-//   res.send({
-//     token: token,
-//   });
-// });
-
-// Create TwiML for outbound calls
-// app.post('/voice', (req, res) => {
-  // let voiceResponse = new VoiceResponse();
-  // voiceResponse.dial({
-  //   callerId: process.env.TWILIO_NUMBER,
-  // }, req.body.number);
-  // res.type('text/xml');
-  // res.send(voiceResponse.toString());
-// });
 
 
 /******************************************************************************
