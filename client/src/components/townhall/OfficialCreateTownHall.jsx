@@ -42,9 +42,9 @@ export default class OfficialCreateTownHall extends Component {
         <form>
           <fieldset>
             <h4>Reach out to the people in your community.</h4>
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Title</span>
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">Title</span>
               </div>
               
               <input 
@@ -58,9 +58,9 @@ export default class OfficialCreateTownHall extends Component {
               value={this.state.title}
               onChange={e => this.handleChange(e)}/><br />
             </div>
-            <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">  
-            <span class="input-group-text" id="basic-addon1" >Email</span>
+            <div className="input-group input-group-sm mb-3">
+            <div className="input-group-prepend">  
+            <span className="input-group-text" id="basic-addon1" >Email</span>
             </div>
             
              <input 
@@ -71,9 +71,9 @@ export default class OfficialCreateTownHall extends Component {
                 aria-describedby="basic-addon1"
                 /><br />
              </div>
-             <div class="input-group mb-3 input-group-sm">
-             <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1">Open Until</span>
+             <div className="input-group mb-3 input-group-sm">
+             <div className="input-group-prepend">
+             <span className="input-group-text" id="basic-addon1">Open Until</span>
              </div>
             <input 
             aria-describedby="basic-addon1"

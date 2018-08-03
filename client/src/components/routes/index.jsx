@@ -5,7 +5,6 @@ import MapContainer from '../MapContainer.jsx';
 import ZipForm from '../ZipForm.jsx';
 import LoginForm from '../LoginForm.jsx';
 import Chat from '../Chat.jsx';
-import Button from '@material-ui/core/Button';
 
 const Routes = (props) => (
   <Router>
@@ -32,9 +31,9 @@ const Routes = (props) => (
       <Route path="/logout" exact component={MapContainer} />
       <Route path="/zipform" exact component={ZipForm} />
     </Switch>
-
-    <footer className="container-fluid p-3 mb-2 bg-light text-dark">
-    <div class="row align-items-end">
+    
+    <footer className=" container-fluid p-3 mb-2 bg-light text-dark">
+    <div className="row align-items-end">
     <h6 className="">the roomee project edition</h6>
     </div>
   </footer>
