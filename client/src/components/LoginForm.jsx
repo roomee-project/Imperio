@@ -6,7 +6,7 @@ export default class LoginForm extends Component {
 
   constructor(props) {
     super(props)
-  
+
     this.state = {
        isLoggedIn: false
     };
@@ -22,7 +22,7 @@ export default class LoginForm extends Component {
       this.setState({isLoggedIn: true})
     }
   }
-  
+
   setUsername(event) {
     this.setState({
       username: event.target.value
@@ -62,7 +62,7 @@ export default class LoginForm extends Component {
             placeholder="password"
             onChange={this.setPassword} />
           <br></br>
-          <Button variant="contained" color="primary" onClick={this.handleLogin}>login</Button>
+          <button variant="contained" color="primary" onClick={this.handleLogin}>login</button>
           <div>
             <a href="auth/google">Log in with Google</a>
           </div>

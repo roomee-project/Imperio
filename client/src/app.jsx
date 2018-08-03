@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
-import Routes from './components/routes/index.jsx';
 import axios from 'axios';
-import Nav from './Nav.jsx';
-import Button from '@material-ui/core/Button';
+import Nav from './nav.jsx';
+import Body from './body.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,10 +36,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Nav />
-        {this.state.isLoggedIn ? `Welcome, ${this.state.username}!` : "Log in!"}
-        <Routes isLoggedIn={this.state.isLoggedIn}/>
+      <div className="container-fluid">
+        <Router>
+          <div>
+            <Nav isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+            <Body isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+          </div>
+        </Router>
       </div>
     )}
 }
