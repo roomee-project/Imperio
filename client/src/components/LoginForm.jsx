@@ -63,7 +63,7 @@ export default class LoginForm extends Component {
             onChange={this.setUsername} />
           <br></br>
           </div>
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
           <input
             className="rounded form-control"
             value={this.state.password}

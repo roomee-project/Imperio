@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       isLoggedIn: false,
       id: '',
-      username: ''
+      username: '',
     }
   }
   componentDidMount() {

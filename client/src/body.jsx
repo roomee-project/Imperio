@@ -6,19 +6,31 @@ import ZipForm from './components/ZipForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import Chat from './components/Chat.jsx';
 
-const Body = (props) => (
-    <div className="container-fluid w-100">
-      <Switch>
-        {/* <Route path="/map" exact component={MapContainer} /> */}
-        <Route path="/townhall" exact component={TownHallContainer} />
-        <Route path="/" exact component={MapContainer} />
-        <Route path="/login" exact component={LoginForm} />
-        <Route path="/chat" exact component={Chat} />
-        <Route path="/logout" exact component={MapContainer} />
-        <Route path="/zipform" exact component={ZipForm} />
-      </Switch>
-    </div>
-)
+class Body extends React.Component {
+  constructor(props) {
+    super(props);
+    this.renderTownHallContainer = this.renderTownHallContainer.bind(this);
+  }
+  renderTownHallContainer () {
+    return (<TownHallContainer isLoggedIn={this.props.isLoggedIn} />)
+  }
+
+  render () {
+    return (
+  <div className="container-fluid w-100">
+    <Switch>
+      {/* <Route path="/map" exact component={MapContainer} /> */}
+      <Route path="/townhall" exact render={this.renderTownHallContainer} />
+      <Route exact path="/" exact component={MapContainer} />
+      <Route path="/login" exact component={LoginForm} />
+      <Route path="/chat" exact component={Chat} />
+      <Route path="/logout" exact component={MapContainer} />
+      <Route path="/zipform" exact component={ZipForm} />
+    </Switch>
+  </div>
+    )
+  }
+}
 //<Route exact path="/" component={App} />
 
 export default Body;

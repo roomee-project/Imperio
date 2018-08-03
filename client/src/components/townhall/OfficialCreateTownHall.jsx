@@ -7,13 +7,10 @@ export default class OfficialCreateTownHall extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      title: ''
+      title: '',
+      isLoggedIn: false
     }
   }
-
-  //TODO:
-  //Front-end :Send data to the server.
-  //Server: store data into the database.
 
   handleClick(e) {
     e.preventDefault()
@@ -39,12 +36,16 @@ export default class OfficialCreateTownHall extends Component {
   render() {
     return (
       <div className="jumbotron rounded">
+        {!this.props.isLoggedIn?
+        <h6>Please login first.</h6> :
+        null
+        }
         <form>
           <fieldset>
             <h4>Reach out to the people in your community.</h4>
             <div className="input-group input-group-sm mb-3">
               <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon1">Title</span>
+                <span className="input-group-text" id="basic-addon1">Title </span>
               </div>
               
               <input 
@@ -60,7 +61,7 @@ export default class OfficialCreateTownHall extends Component {
             </div>
             <div className="input-group input-group-sm mb-3">
             <div className="input-group-prepend">  
-            <span className="input-group-text" id="basic-addon1" >Email</span>
+            <span className="input-group-text" id="basic-addon1" >Email </span>
             </div>
             
              <input 
@@ -73,7 +74,7 @@ export default class OfficialCreateTownHall extends Component {
              </div>
              <div className="input-group mb-3 input-group-sm">
              <div className="input-group-prepend">
-             <span className="input-group-text" id="basic-addon1">Open Until</span>
+             <span className="input-group-text" id="basic-addon1">Open Until </span>
              </div>
             <input 
             aria-describedby="basic-addon1"
@@ -81,7 +82,12 @@ export default class OfficialCreateTownHall extends Component {
             type="datetime-local" />
            </div>
             <button className="btn btn-light"
-              onClick={this.handleClick}>
+              onClick={
+                this.props.isLoggedIn ?
+                this.handleClick
+                :
+                null//why does refresh not happen here
+          }>
               Create Town Hall
             </button>
           </fieldset>
