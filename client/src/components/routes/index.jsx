@@ -14,7 +14,7 @@ const Routes = (props) => (
         <li><Link to="/" className="navbar-brand">Home</Link></li>
         <li><Link to="/townhall" className="nav-link">Town Hall</Link></li>
         {/* <li><Link to="/map" className="nav-link">Map</Link></li> */}
-        <li><Link to="/chat" className="nav-link">Chat</Link></li>
+        {<li><Link to="/chat" className="nav-link">Chat</Link></li>}
         {!props.isLoggedIn ? <li><Link to="/login" className="nav-link">Login</Link></li>
             : <a href="/logout" className="nav-link">Logout</a> }
         <li><a href="https://vote.gov/" className= "nav-link" target="_blank">Vote Registration</a></li>
@@ -27,7 +27,7 @@ const Routes = (props) => (
       <Route path="/townhall" exact component={TownHallContainer} />
       <Route path="/" exact component={MapContainer} />
       <Route path="/login" exact component={LoginForm} />
-      <Route path="/chat" exact component={Chat} />
+      {/*<Route path="/chat" exact component={Chat} />*/}
       <Route path="/logout" exact component={MapContainer} />
       <Route path="/zipform" exact component={ZipForm} />
     </Switch>
@@ -39,7 +39,11 @@ const Routes = (props) => (
   </footer>
     </div>
   </Router>
-  
+
+
+
+
+
 
  //<Route path="/vote" exact component={() => window.open("https://vote.gov/","_blank")}/>
 )
