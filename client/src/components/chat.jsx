@@ -60,6 +60,7 @@ class Chat extends Component {
       });        
     }
 
+    // delete this comment
     setUsername (e) {
       console.log('username target value', e.target.value)
       this.setState({
