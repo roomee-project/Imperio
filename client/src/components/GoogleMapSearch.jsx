@@ -32,26 +32,28 @@ export default class LocationSearchInput extends React.Component {
  
   render() {
     return (
-      <div>
+      <div className="jumbotron bg-white ">
+      <div className="row justify-content-center align-items-center">
       <PlacesAutocomplete
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+       className="algolia-autocomplete bd-search d-flex"
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                className: 'location-search-input form-control ds-input',
               })}
             />
-            <div className="autocomplete-dropdown-container">
+            <div className="autocomplete-dropdown-container ds-dropdown-menu">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
+                  ? 'dropdown-item bg-light text-dark'//'suggestion-item--active'
+                  : 'dropdown-item text-secondary';
                 // inline style for demonstration purpose
                 const style = suggestion.active
                   ? { backgroundColor: '#fafafa', cursor: 'pointer' }
@@ -71,6 +73,7 @@ export default class LocationSearchInput extends React.Component {
           </div>
         )}
       </PlacesAutocomplete>
+      </div>
       <GoogleMap lat={this.state.lat} lng={this.state.lng} address={this.state.address}/>
       </div>
     );
