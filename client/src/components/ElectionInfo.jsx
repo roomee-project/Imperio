@@ -41,11 +41,20 @@ export default class ElectionInfo extends Component {
   render () {
     //input div below's data needs to chanage lat and long of googlemap view
     return(
-      <div>
-      <div> <input value={this.state.address} placeholder="Enter Address" onChange={this.onChange} />
-      <button onClick={this.search}>Search</button>
-      </div>
-      <ElectionView data={this.state.data} />
+      <div className="container jumbotron bg-white">
+        <div className="row justify-content-center align-items-center">
+           <div className="col-4 align-self-center">
+             <h4>Find out more about upcoming Elections</h4>
+           <div className="input-group mb-3">
+             <input className="rounded form-control" value={this.state.address} placeholder="Enter Registered Voting Address" onChange={this.onChange} />
+           </div>
+             <button className="btn btn-primary" onClick={this.search}>Search</button>
+           <div>
+            <br></br>
+            {this.state.data === '' ? '' : <ElectionView data={this.state.data} address={this.state.address} />}
+           </div>
+         </div>
+       </div>
       </div>
       )
   }
