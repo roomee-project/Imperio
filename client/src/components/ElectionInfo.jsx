@@ -31,6 +31,7 @@ export default class ElectionInfo extends Component {
       this.setState({
         data: response.data
       });
+      console.log(this.state.data)
     })
     .catch(error => {
       console.log(error);
@@ -38,6 +39,7 @@ export default class ElectionInfo extends Component {
   };
 
   render () {
+    //input div below's data needs to chanage lat and long of googlemap view
     return(
       <div>
       <div> <input value={this.state.address} placeholder="Enter Address" onChange={this.onChange} />
