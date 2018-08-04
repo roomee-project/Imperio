@@ -46,7 +46,7 @@ export default class UserCreateTownHall extends Component {
   handleSubmit(e) {
     //send data to server
     //tell it that you are a user and send it your question and which town hall it is for
-    console.log('yo')
+    // console.log('yo')
     e.preventDefault();
     this.sendQuestion(this.state.question, this.state.selected)
   }
@@ -77,7 +77,7 @@ export default class UserCreateTownHall extends Component {
       <div className="jumbotron">
       {!this.props.isLoggedIn?
       <h6>Please login first.</h6> :
-      null
+      <h6>Thanks for logging in!</h6>
     }
       <h4>Contribute to a town hall. </h4>
         <h6>Be active in your community.</h6>
@@ -103,12 +103,7 @@ export default class UserCreateTownHall extends Component {
                 value={this.state.question}
                 onChange={e => this.handleChange(e)}/><br/>
             <button className="btn btn-light"
-              onClick={
-                this.props.isLoggedIn ?
-                this.handleSubmit()
-                :
-                null//why does refresh happen here
-          }
+              onClick={this.handleSubmit}
             >Submit Question</button>
           </fieldset>
         </form>

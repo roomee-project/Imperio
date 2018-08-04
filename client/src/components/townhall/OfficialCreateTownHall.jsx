@@ -38,7 +38,7 @@ export default class OfficialCreateTownHall extends Component {
       <div className="jumbotron rounded">
         {!this.props.isLoggedIn?
         <h6>Please login first.</h6> :
-        null
+        <h6>Thanks for logging in!</h6>
         }
         <form>
           <fieldset>
@@ -82,12 +82,7 @@ export default class OfficialCreateTownHall extends Component {
             type="datetime-local" />
            </div>
             <button className="btn btn-light"
-              onClick={
-                this.props.isLoggedIn ?
-                this.handleClick
-                :
-                null//why does refresh not happen here
-          }>
+              onClick={this.handleClick}>
               Create Town Hall
             </button>
           </fieldset>
