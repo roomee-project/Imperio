@@ -70,7 +70,10 @@ export default class MapContainer extends Component {
           {this.state.selectedState ? <h1>Selected: {this.state.selectedState}</h1> : <h1>Select A State!</h1>}
 
         </div>
-        <div className="row mx-auto w-100">
+        <div className="row mx-auto w-100" id="nav-usa" >
+        <ul className="list-group">
+          <li className="list-group-item" href="#reps">
+          <a href="#reps">
           <USAMap
             onClick={this.mapHandler}
             title={"Choose your state"}
@@ -78,6 +81,9 @@ export default class MapContainer extends Component {
             height={this.mapDimensions().height *1.2}
             customize={{[this.state.selectedState]: {fill: colorHelper(this.state.data)}}}
           />
+          </a>
+          </li>
+          </ul>
         </div>
         <ListView data={this.state.data}/>
       </div>
