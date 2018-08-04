@@ -1,10 +1,11 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import API_KEY from '../../../config/map.js';
- 
+
 const AnyReactComponent = ({ text }) => ( <div>{text}</div>);
- 
+
 class GoogleMap extends React.Component {
+
   constructor (props) {
     super(props)
     this.state= {
@@ -36,6 +37,7 @@ class GoogleMap extends React.Component {
   }
   }
  
+
   render() {
     console.log(this.state.center.lng, 'hi')
     return (
@@ -47,14 +49,16 @@ class GoogleMap extends React.Component {
           zoom={this.state.zoom}
         >
           <AnyReactComponent
-            lat={this.props.lat}
-            lng={this.props.lng}
+
+            lat={this.state.center.lat}
+            lng={this.state.center.lng}
             text={this.props.address}
+
           />
         </GoogleMapReact>
       </div>
     );
   }
 }
- 
+
 export default GoogleMap;
