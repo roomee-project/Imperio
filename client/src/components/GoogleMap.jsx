@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import API_KEY from '../../../config/map.js';
 
-const AnyReactComponent = ({ text }) => ( <div>{text}</div>);
+const Pin = ({ text }) => ( <div >{text}</div>);
 
 class GoogleMap extends React.Component {
 
@@ -11,10 +11,13 @@ class GoogleMap extends React.Component {
     this.state= {
 
       center: {
-        lat: 34.0205319,//recieve these props from ashleigh's api call
+        lat: 34.0205319,
         lng: -118.4817919,
       },
       zoom: 11,
+      //create array to contain list of places returned by voting location api as addresses
+        //with this array, create function below to turn into latlng pairs
+        //for every element in array, render one Pin component
     }
   }
 
@@ -40,11 +43,11 @@ class GoogleMap extends React.Component {
           center={this.state.center}
           zoom={this.state.zoom}
         >
-          <AnyReactComponent
+          <Pin
 
             lat={this.state.center.lat}
             lng={this.state.center.lng}
-            text={this.props.address}
+            text={'A'}
 
           />
         </GoogleMapReact>
