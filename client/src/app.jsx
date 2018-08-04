@@ -23,7 +23,7 @@ class App extends React.Component {
           console.log('no userFound')
           this.setState({isLoggedIn: false})
         } else if (res.data[0].id) {
-          console.log(res.data[0])
+          console.log('this is the user profile reference client side', res.data[0])
           this.setState({
             isLoggedIn: true,
             id: res.data[0].id,

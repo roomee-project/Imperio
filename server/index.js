@@ -137,10 +137,25 @@ app.get('/test', utils.authCheck, (req, res) => {
 
 //Temp function for Mubeen front-end prior to RR implementation
 app.get('/checkuser', utils.authCheck, (req, res) => {
-  console.log('passed authcheck')
+  console.log('passed authcheck', req.user)
   req.user ? res.send(req.user) : res.send('whoops');
 });
 
+/******************************************************************************
+Name: User Profile Management Routes
+Description:   Adds information provided by user to database
+******************************************************************************/
+
+app.post('/addzip', (req, res) => {
+  // the info we need is at req.body
+  // { id: 3,
+  //   userid: '117206635640981645178',
+  //   username: 'Anthony',
+  //   zip: '01060' }
+  db.addZip(req.body, () => {
+    res.sendStatus(200);
+  });
+});
 
 /******************************************************************************
 Name:  React Router Redirect Routes
@@ -187,7 +202,7 @@ app.get('/map', function(req, res) {
 
 app.get('/login', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'), function(err) {
-    if (err) {
+    if (err) {``
       res.status(500).send(err)
     }
   });
