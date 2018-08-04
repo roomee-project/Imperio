@@ -6,6 +6,7 @@ const Nav = (props) => (
     <ul className="navbar-nav mr-auto align-middle w-100" >
       <li className="col nav-item"><Link to="/" className="navbar-brand">Home</Link></li>
       <li className="col nav-item"><Link to="/townhall" className="nav-link">Town Hall</Link></li>
+      <li className="col nav-item"><Link to="/gmap" className="nav-link">Events Map</Link></li>
       {!props.isLoggedIn ? <li className="col nav-item"><Link to="/login" className="nav-link">Chat</Link></li> : <li className="col nav-item"><Link to="/chat" className="nav-link">Chat</Link></li>}
       {/*<li className="col nav-item"><Link to="/chat" className="nav-link">Chat</Link></li>*/}
       <li className="col nav-item"><Link to="/zipform" className="nav-link">Local Reps</Link></li>
