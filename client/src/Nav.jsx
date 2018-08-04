@@ -39,7 +39,7 @@ export default class Nav extends React.Component {
             <a className="dropdown-item" href="https://vote.gov/" target="_blank">Register to vote! (offsite link)</a>
           </div>
         </div>
-          <a className="navbar-brand btn btn-primary btn-lg mr-auto" href="/">Represent!   {isLoggedIn ? `Welcome, ${username}` : `Welcome.`}</a>
+          <a className="navbar-brand btn btn-primary btn-lg mr-auto" href="/">Represent!{isLoggedIn ? `    Welcome, ${username}` : ``}</a>
           <Link to="/gmap" className="navbar-nav-link btn btn-primary btn-lg mr-auto">Events Map</Link>
           <Link to="/electioninfo" className="navbar-nav-link btn btn-primary btn-lg mr-auto">Election Info</Link>
             {isLoggedIn ?
