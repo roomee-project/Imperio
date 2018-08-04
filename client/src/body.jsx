@@ -5,6 +5,7 @@ import MapContainer from './components/MapContainer.jsx';
 import ZipForm from './components/ZipForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import Chat from './components/Chat.jsx';
+import GoogleMap from './components/GoogleMap.jsx';
 
 class Body extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Body extends React.Component {
       <Route path="/chat" exact component={Chat} />
       <Route path="/logout" exact component={MapContainer} />
       <Route path="/zipform" exact component={ZipForm} />
+      <Route path="/gmap" exact component={GoogleMap} />
     </Switch>
   </div>
     )
