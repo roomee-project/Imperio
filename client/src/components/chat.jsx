@@ -81,9 +81,29 @@ class Chat extends Component {
         userZip: e.target.value
       });
     }
-
+    
     submitZip () {
       this.setState({ zipCodeSubmitted: true });
+      // check to see if the user has an account
+      // if the user does have an account
+        // send their zip code to the server in a POST
+      axios.get('/checkUser')
+      .then(res => {
+        // if a user is not in DB then the res.data will be {userFound: false}
+        // if user is in DB res.data[0] will object below
+        // {id: 3, userid: "117206635640981645178", username: "Anthony", zip: null}
+        if (Array.isArray(res.data)) { //checks if user exists
+          const user = res.data[0];
+          // save zip user entered to user object
+          user.zip = this.state.userZip;
+          axios.post('/addZip', user)
+          .then(res => {
+            console.log('zip code added to user profile');
+          })
+
+        }
+      })
+
     }
 
     render () {

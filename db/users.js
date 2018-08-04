@@ -13,6 +13,11 @@ var insertData = (data, callback) => {
   });
 };
 
+var addZip = (userData, callback) => {
+  // locate user record by id
+  // insert the zip code into this record
+}
+
 /******************************************************************************
 Function Name: createUser
 Input:  a user's google profile ID
@@ -81,8 +86,9 @@ var getUser = (rowId) => {
 };
 
 module.exports = {
-  insertData: insertData,
-  doesExist:  doesExist,
+  addZip: addZip,
   createUser: createUser,
-  getUser:    getUser
+  doesExist:  doesExist,
+  getUser:    getUser,
+  insertData: insertData
 };
