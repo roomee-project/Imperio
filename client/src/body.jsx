@@ -5,7 +5,9 @@ import MapContainer from './components/MapContainer.jsx';
 import ZipForm from './components/ZipForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import Chat from './components/Chat.jsx';
+import ElectionInfo from './components/ElectionInfo.jsx';
 import GoogleMap from './components/GoogleMap.jsx';
+
 
 class Body extends React.Component {
   constructor(props) {
@@ -28,11 +30,13 @@ class Body extends React.Component {
       <Route path="/logout" exact component={MapContainer} />
       <Route path="/zipform" exact component={ZipForm} />
       <Route path="/gmap" exact component={GoogleMap} />
+      <Route path="/electioninfo" exact component={ElectionInfo} />
     </Switch>
   </div>
     )
   }
 }
+
 //<Route exact path="/" component={App} />
 
 export default Body;
