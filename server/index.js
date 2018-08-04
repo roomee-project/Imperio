@@ -130,7 +130,14 @@ Description:   Adds information provided by user to database
 ******************************************************************************/
 
 app.post('/addzip', (req, res) => {
-  console.log(req.params);
+  // the info we need is at req.body
+  // { id: 3,
+  //   userid: '117206635640981645178',
+  //   username: 'Anthony',
+  //   zip: '01060' }
+  db.addZip(req.body, () => {
+    res.sendStatus(200);
+  });
 });
 
 /******************************************************************************

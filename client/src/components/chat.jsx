@@ -98,7 +98,7 @@ class Chat extends Component {
           user.zip = this.state.userZip;
           axios.post('/addZip', user)
           .then(res => {
-            console.log('zip code added to user profile');
+            console.log('zip code added to user profile?', res);
           })
 
         }
@@ -117,7 +117,7 @@ class Chat extends Component {
                   <div className="card-title"> 
                       {this.state.username ? `Chatting as: ${this.state.username}` : ''}
                   </div>
-                  {!this.state.zipCodeSubmitted ? 
+                  {this.state.userZip.length === 5 ? 
                     <ChatZipForm 
                       setZip={this.setZip}
                       submitZip={this.submitZip}
