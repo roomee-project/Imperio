@@ -17,6 +17,7 @@ const townhalls = require('../db/townhalls.js');
 const apiHelpers = require('../lib/apiHelper.js');
 const dataHelpers = require('../lib/dataHelpers.js')
 const apiSearch = require('../lib/apiSearch.js');
+const apiSearch2 = require('../lib/apiSearch2.js');
 const config = require('../config/civic.js');
 const path = require("path");
 /************************************************
@@ -80,11 +81,27 @@ app.post('/reps', (req, res, next) => {
 
   apiSearch.searchByZip(locator, (response) => {
     if (response.error) {
-      res.send(console.log(JSON.stringify('Please enter valid ZIP code.')));
+      res.send(JSON.stringify('Please enter valid ZIP code.'));
     } else {
       res.status(201);
       console.log(response);
       res.send(apiHelpers.getOfficials(region, response));
+    }
+  });
+});
+
+app.get('/voterinfo', (req, res, next) => {
+  // console.log("Get to API", req.query.address);
+  // console.log("Get to API", req.param('address'));
+  const address = req.param('address');
+
+  apiSearch2.searchByAddress(address, (response) => {
+    if (response.error) {
+      res.send(response.error);
+    } else {
+      res.status(201);
+      console.log(response);
+      res.send(response);
     }
   });
 });

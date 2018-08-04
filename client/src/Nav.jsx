@@ -10,6 +10,7 @@ const Nav = (props) => (
       {!props.isLoggedIn ? <li className="col nav-item"><Link to="/login" className="nav-link">Chat</Link></li> : <li className="col nav-item"><Link to="/chat" className="nav-link">Chat</Link></li>}
       {/*<li className="col nav-item"><Link to="/chat" className="nav-link">Chat</Link></li>*/}
       <li className="col nav-item"><Link to="/zipform" className="nav-link">Local Reps</Link></li>
+      <li className="col nav-item"><Link to="/electioninfo" className="nav-link">Election Info</Link></li>
       <li className="col nav-item"><a href="https://vote.gov/" className= "nav-link" target="_blank">Vote Registration</a></li>
       <li className="col nav-item float-right"><button className="btn btn btn-primary" type="button">{!props.isLoggedIn ? <Link to="/login" className="nav-link">Login</Link>
 

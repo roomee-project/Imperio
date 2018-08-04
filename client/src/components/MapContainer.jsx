@@ -40,7 +40,7 @@ export default class MapContainer extends Component {
   }
 
   mapHandler = (event) => {
-    // console.log('event.target.dataset.name is', event.target.dataset.name);
+    console.log('event.target.dataset.name is', event.target.dataset.name);
     const stateClicked = event.target.dataset.name;
     // this.setState({selectedState: event.target.dataset.name})
 
