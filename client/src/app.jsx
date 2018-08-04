@@ -36,14 +36,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <Router>
-          <div>
-            <Nav isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
-            <Body isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
-          </div>
-        </Router>
-      </div>
+      <section>
+        <div className="container-fluid">
+          <Router>
+            <div>
+              <Nav isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+              <Body isLoggedIn={this.state.isLoggedIn} username={this.state.username}/>
+            </div>
+          </Router>
+        </div>
+        <footer className="bg-primary text-white w-auto h-100 row justify-content-center align-items-center">
+          <p>© 2018 the roomee project edition</p>
+        </footer>
+      </section>
     )}
 }
 

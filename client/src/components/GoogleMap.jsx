@@ -18,13 +18,6 @@ class GoogleMap extends React.Component {
     }
   }
 
-  // static defaultProps = {
-  //   newCenter: {
-  //     lat: this.props.lat,
-  //     lng: this.props.lng
-  //   }
-  // };
-
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.lat !== this.state.center.lat || this.props.lng !== this.state.center.lng) {
@@ -39,7 +32,6 @@ class GoogleMap extends React.Component {
  
 
   render() {
-    console.log(this.state.center.lng, 'hi')
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '70vh', width: '70%' }}>
