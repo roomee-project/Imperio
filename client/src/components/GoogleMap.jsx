@@ -1,12 +1,16 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import API_KEY from '../../../config/map.js';
 import {geocodeByAddress,getLatLng} from 'react-places-autocomplete';
 
+var API_KEY;
+if (!process.env.MAPKEY) {
+  API_KEY = require('../../../config/map.js');
+}
+const MAPKEY = process.env.MAPKEY || API_KEY.MAPKEY;
 
-const Pin = ({ text }) => ( 
-  <div 
-    className=" p-3 mb-2 bg-danger text-white rounded-circle">
+const Pin = ({ text }) => (
+  <div
+    className="p-3 mb-2 bg-danger text-white rounded-circle">
       {text}
   </div>
 );
@@ -37,11 +41,11 @@ class GoogleMap extends React.Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.renderPinComponent(latLng);
-        
+
       })
       .catch(error => console.error('Error', error));
     }
-    
+
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.lat !== this.state.center.lat || this.props.lng !== this.state.center.lng) {
@@ -53,7 +57,7 @@ class GoogleMap extends React.Component {
       })
     }
   }
-    
+
   renderPinComponent (coord) {
     // console.log(coord, 'from pincomp')
     //coords are correct but pin does not drop
@@ -64,7 +68,7 @@ class GoogleMap extends React.Component {
       <Pin
         lat={coord.lat}
         lng={coord.lng}
-        text={'A'}  
+        text={'A'}
     />)
   }
 
@@ -74,22 +78,22 @@ class GoogleMap extends React.Component {
       // Important! Always set the container height explicitly
       <div className="jumbotron bg-white" style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: API_KEY.MAPKEY }}
+          bootstrapURLKeys={{ key: MAPKEY }}
           center={this.state.center}
           zoom={this.state.zoom}
-        >          
-             
-        {          
+        >
+
+        {
           this.state.pins.length > 0 ?
-          this.state.pins.map ( pin =>  
-            this.renderPin(pin) 
+          this.state.pins.map ( pin =>
+            this.renderPin(pin)
             )
             :
             <Pin
               lat={this.state.center.lat}
               lng={this.state.center.lng}
               text={'Test'}
-            />          
+            />
         }
         </GoogleMapReact>
       </div>

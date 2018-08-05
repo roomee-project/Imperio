@@ -18,14 +18,21 @@ const apiHelpers = require('../lib/apiHelper.js');
 const dataHelpers = require('../lib/dataHelpers.js')
 const apiSearch = require('../lib/apiSearch.js');
 const apiSearch2 = require('../lib/apiSearch2.js');
-const config = require('../config/civic.js');
 const path = require("path");
+
+var config;
+if (!process.env.SESSION_SECRET) {
+  config = require('../config/civic.js');
+}
+const SESSION_SECRET = process.env.SESSION_SECRET || config.SESSION_SECRET
+const PORT = process.env.PORT || 3000;
+
 /************************************************
 Passport Related (Below)
 ************************************************/
 
 app.use(session({
-  secret: config.SESSION_SECRET,
+  secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -36,7 +43,7 @@ const passportSetup = require('../config/passport-setup.js');
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser(config.SESSION_SECRET));
+app.use(cookieParser(SESSION_SECRET));
 
 /************************************************/
 
@@ -49,8 +56,6 @@ app.use(bodyParser.json()); // This should be adjusted towards the type of req.b
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const port = process.env.PORT || 3000;
-
 //*********live-chat ***********//
 io.on('connection', (client) => {
   console.log(client.id);
@@ -60,8 +65,8 @@ io.on('connection', (client) => {
     io.emit('receive_message', data);
   })
 });
- server.listen(port, () => {
-  console.log(`server listening from ${port}!`)
+ server.listen(PORT, () => {
+  console.log(`server listening from ${PORT}!`)
 });
 // ////******route requests*********///
 

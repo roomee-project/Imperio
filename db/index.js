@@ -1,29 +1,19 @@
 //Database Connection and Functions
 var mysql = require('mysql');
 
-//var connection = mysql.createConnection({
-var connection = mysql.createPool({
-  host      : 'localhost',
-  user      : 'root',
-  password  : '',
-  database  : 'greenfield'
-});
-
-/*
-Simple Test Function to verify MySql functionality - not used elsewhere
-*/
-
-//***************************************
-
-
-//*************************************************
-// module.exports = {
-//   connection: connection,
-//   insertData: insertData,
-//   doesExist:  doesExist,
-//   createUser: createUser,
-//   getUser:    getUser
-// };
+var connection;
+if(process.env.JAWSDB_URL) {
+  //Heroku deployment
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  //local host
+    connection = mysql.createConnection({
+      host      : 'localhost',
+      user      : 'root',
+      password  : '',
+      database  : 'greenfield'
+    });
+};
 
 module.exports = {
   connection: connection
