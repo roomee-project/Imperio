@@ -1,5 +1,4 @@
 const log = require('ololog');
-const config = require('./civic.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const db = require('../db/users.js');
@@ -11,8 +10,8 @@ Description: to sign into passport, go to
              localhost:3000/auth/google
 ******************************************************************************/
 passport.use(new GoogleStrategy({
-    clientID: config.GOOGLE_CLIENT_ID,
-    clientSecret: config.GOOGLE_CLIENT_SECRET,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
