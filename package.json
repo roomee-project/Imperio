@@ -1,20 +1,20 @@
 {
-  "name": "hrr32-rubeus",
+  "name": "Polical-App",
   "version": "1.0.0",
-  "description": "A greenfield app to get and display civic data",
+  "description": "An appplication get and display civic data",
   "main": "/server/index.js",
   "scripts": {
     "test": "jest",
     "start": "node server/index.js",
     "develop": "webpack --mode development --watch",
-    "server-dev": "nodemon server/index.js",
+    "server-dev": "nodemon -r dotenv/config server/index.js",
     "lint": "eslint --fix .",
     "db": "mysql -u root < db/schema.sql",
     "launch-db": "mysql -u root -p"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrisamurao/HRR32-Rubeus.git"
+    "url": "https://github.com/roomee-project/Imperio.git"
   },
   "keywords": [
     "vote",
@@ -22,30 +22,35 @@
     "data",
     "election"
   ],
-  "author": "HRR-32 Team Hagrid",
+  "author": "HRR Project Teams",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chrisamurao/HRR32-Rubeus/issues"
+    "url": "https://github.com/roomee-project/Imperio"
   },
-  "homepage": "https://github.com/chrisamurao/HRR32-Rubeus#readme",
+  "homepage": "https://github.com/roomee-project/Imperio#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "google-map-react": "^1.0.6",
     "jquery": "^3.3.1",
+    "moment": "^2.22.2",
     "mysql": "^2.16.0",
+    "ngrok": "^3.0.1",
+    "ololog": "^1.1.110",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-places-autocomplete": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "react-usa-map": "^1.3.0",
     "sequelize": "^4.38.0",
-    "socket.io": "^2.1.1",
-    "webpack-dev-server": "^3.1.4"
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -67,6 +72,7 @@
     "request": "^2.87.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
+    "webpack-dev-server": "^3.1.4",
     "webpack-cli": "^3.1.0"
   },
   "peerDependencies": {

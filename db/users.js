@@ -13,6 +13,21 @@ var insertData = (data, callback) => {
   });
 };
 
+var addZip = (data, callback) => {
+  // locate user record by id
+  // insert the zip code into this record
+  // { id: 3,
+  // userid: '117206635640981645178',
+  // username: 'Anthony',
+  // zip: '01060' }
+  console.log('made it to the database', data);
+  const zipcode = data.zip
+  const sql = `UPDATE users set zip = ${data.zip.toString()} WHERE id = ${data.id}`
+  c.connection.query(sql, (err, results, data) => {
+    err ? console.log('Error', err) : callback();
+  });
+}
+
 /******************************************************************************
 Function Name: createUser
 Input:  a user's google profile ID
@@ -81,8 +96,9 @@ var getUser = (rowId) => {
 };
 
 module.exports = {
-  insertData: insertData,
-  doesExist:  doesExist,
+  addZip: addZip,
   createUser: createUser,
-  getUser:    getUser
+  doesExist:  doesExist,
+  getUser:    getUser,
+  insertData: insertData
 };

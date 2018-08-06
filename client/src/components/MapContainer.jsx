@@ -41,8 +41,8 @@ export default class MapContainer extends Component {
 
   mapHandler = (event) => {
     console.log('event.target.dataset.name is', event.target.dataset.name);
-
-    this.setState({selectedState: event.target.dataset.name})
+    const stateClicked = event.target.dataset.name;
+    // this.setState({selectedState: event.target.dataset.name})
 
     axios.post('/reps', {
       location: event.target.dataset.name,
@@ -50,10 +50,14 @@ export default class MapContainer extends Component {
     })
     .then(response => {
       if (typeof(response.data) === 'String') {
+        // what case does this handle? the else block is getting called when a user clicks on a state
+        // this is likely called when a user enters in their zipCode to search
         console.log(response.data);
       } else {
-        console.log(response.data);
-        this.setState({ data: response.data })
+        this.setState({
+          selectedState: stateClicked,
+          data: response.data
+        });
       }
     })
   };
@@ -61,19 +65,25 @@ export default class MapContainer extends Component {
   render() {
     console.log('render called')
     return (
-      <div className="container">
+      <div className="container-fluid text-center">
         <div>
           {this.state.selectedState ? <h1>Selected: {this.state.selectedState}</h1> : <h1>Select A State!</h1>}
-          
+
         </div>
-        <div className="row text-center">
-          <USAMap 
+        <div className="row mx-auto w-100" id="nav-usa" >
+        <ul className="list-group">
+          <li className="list-group-item" href="#reps">
+          <a href="#reps">
+          <USAMap
             onClick={this.mapHandler}
-            title={"Choose your state"} 
-            width={this.mapDimensions().width * .8}
-            height={this.mapDimensions().height * .8}
+            title={"Choose your state"}
+            width={this.mapDimensions().width *1.2}
+            height={this.mapDimensions().height *1.2}
             customize={{[this.state.selectedState]: {fill: colorHelper(this.state.data)}}}
           />
+          </a>
+          </li>
+          </ul>
         </div>
         <ListView data={this.state.data}/>
       </div>

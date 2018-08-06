@@ -8,6 +8,8 @@ const utils = require('./utils.js');
 const server = require('http').createServer(app);
 const socket = require('socket.io');
 const io = socket(server);
+const log = require('ololog');
+
 
 //Database Dependences Below
 const db = require('../db/users.js');
@@ -17,14 +19,18 @@ const townhalls = require('../db/townhalls.js');
 const apiHelpers = require('../lib/apiHelper.js');
 const dataHelpers = require('../lib/dataHelpers.js')
 const apiSearch = require('../lib/apiSearch.js');
-const config = require('../config/civic.js');
+const apiSearch2 = require('../lib/apiSearch2.js');
 const path = require("path");
+
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const PORT = process.env.PORT || 3000;
+
 /************************************************
 Passport Related (Below)
 ************************************************/
 
 app.use(session({
-  secret: config.SESSION_SECRET,
+  secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -35,7 +41,7 @@ const passportSetup = require('../config/passport-setup.js');
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser(config.SESSION_SECRET));
+app.use(cookieParser(SESSION_SECRET));
 
 /************************************************/
 
@@ -43,13 +49,10 @@ app.use(express.static(`${__dirname}/../client/dist`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.use(bodyParser.json()); // This should be adjusted towards the type of req.body we will get
 // app.use(bodyParser.text()); //or some other type
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-const port = process.env.PORT || 3000;
 
 //*********live-chat ***********//
 io.on('connection', (client) => {
@@ -60,8 +63,8 @@ io.on('connection', (client) => {
     io.emit('receive_message', data);
   })
 });
- server.listen(port, () => {
-  console.log(`server listening from ${port}!`)
+ server.listen(PORT, () => {
+  console.log(`server listening from ${PORT}!`)
 });
 // ////******route requests*********///
 
@@ -81,12 +84,23 @@ app.post('/reps', (req, res, next) => {
 
   apiSearch.searchByZip(locator, (response) => {
     if (response.error) {
-      console.log(response.error);
       res.send(JSON.stringify('Please enter valid ZIP code.'));
     } else {
       res.status(201);
       console.log(response);
       res.send(apiHelpers.getOfficials(region, response));
+    }
+  });
+});
+
+app.get('/voterinfo', (req, res, next) => {
+  const address = req.query.address;
+
+  apiSearch2.searchByAddress(address, (err, response) => {
+    if (err) {
+      res.send(204, response);
+    } else {
+      res.send(201, response);
     }
   });
 });
@@ -106,7 +120,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     console.log('req.user is', req.user);
-    res.redirect('/zip');
+    res.redirect('/');
   });
 
 app.get('/logout', (req, res) => {
@@ -122,12 +136,25 @@ app.get('/test', utils.authCheck, (req, res) => {
 
 //Temp function for Mubeen front-end prior to RR implementation
 app.get('/checkuser', utils.authCheck, (req, res) => {
-  console.log('passed authcheck')
+  console.log('passed authcheck', req.user)
   req.user ? res.send(req.user) : res.send('whoops');
 });
 
+/******************************************************************************
+Name: User Profile Management Routes
+Description:   Adds information provided by user to database
+******************************************************************************/
 
-
+app.post('/addzip', (req, res) => {
+  // the info we need is at req.body
+  // { id: 3,
+  //   userid: '117206635640981645178',
+  //   username: 'Anthony',
+  //   zip: '01060' }
+  db.addZip(req.body, () => {
+    res.sendStatus(200);
+  });
+});
 
 /******************************************************************************
 Name:  React Router Redirect Routes
@@ -174,7 +201,7 @@ app.get('/map', function(req, res) {
 
 app.get('/login', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'), function(err) {
-    if (err) {
+    if (err) {``
       res.status(500).send(err)
     }
   });

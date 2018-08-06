@@ -9,9 +9,12 @@ export default class ViewAllTownHalls extends Component {
     this.state = {
       townHalls : [],
       townHall: '',
-      questions: []
+      questions: [],
+      view: 'list'
     }
     this.handleClick = this.handleClick.bind(this);
+    this.renderView = this.renderView.bind(this);
+    this.returnToList = this.returnToList.bind(this);
   }
 
   componentDidMount() {
@@ -28,7 +31,7 @@ export default class ViewAllTownHalls extends Component {
 
 
   handleClick(e) {
-    this.setState({ townHall: e.target.textContent}, () => {
+    this.setState({ townHall: e.target.textContent, view: 'post'}, () => {
       axios.get('/questions', {
         params: {
           townHall: this.state.townHall
@@ -41,22 +44,56 @@ export default class ViewAllTownHalls extends Component {
       })
     })
   }
+  returnToList () {
+    this.setState({
+      view: 'list'
+    });
+  }
+
+  
+  renderView () {
+    if (this.state.view === 'list') {
+      return (
+        <ul className="list-group list-group-flush">
+        { this.state.townHalls.length > 0 ? this.state.townHalls.map((hall, i) =>
+          <li onClick={this.handleClick} className="list-group-item list-group-item-action" key={i}>{hall}</li>) : ''}
+        </ul>
+      )
+
+    } else if (this.state.view === 'post') {
+      return (
+        <div> 
+          <button className="btn btn-light" onClick={this.returnToList}>Back </button>
+          <ViewTownHall townHallName={this.state.townHall} questions={this.state.questions}/>
+        </div>
+      )
+    }
+  }
 
   render() {
     return (
-      <div className="container">
+      <div className="jumbotron bg-white">
         <h1 className="display-4"> Open Town Halls </h1>
-        <ul className="list-group">
-        { this.state.townHalls.length > 0 ? this.state.townHalls.map((hall, i) =>
-          <li className="list-group-item" key={i}> <span onClick={this.handleClick}>{hall}</span></li>) : ''}
-        </ul>
-        <div className="container">
-          <ViewTownHall townHallName={this.state.townHall} questions={this.state.questions}/>
-        </div>
+        {this.renderView()}
       </div>
     )
   }
 }
 //http://derpturkey.com/react-pass-value-with-onclick/
 
-//
+//create view switcher
+//when clcik on hall, set viewtown to true
+//show THAT town hall
+//set to false when click back button and show alltownhalls
+
+{/* <div className="col-sm">
+<h1 className="display-4"> Open Town Halls </h1>
+<ul className="list-group">
+{ this.state.townHalls.length > 0 ? this.state.townHalls.map((hall, i) =>
+  <li className="list-group-item" key={i}> <span onClick={this.handleClick}>{hall}</span>
+  </li>) : ''}
+</ul>
+<div> 
+  <ViewTownHall townHallName={this.state.townHall} questions={this.state.questions}/>
+</div>
+</div> */}

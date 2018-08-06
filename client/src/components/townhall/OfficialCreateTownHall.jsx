@@ -7,13 +7,10 @@ export default class OfficialCreateTownHall extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      title: ''
+      title: '',
+      isLoggedIn: false
     }
   }
-
-  //TODO:
-  //Front-end :Send data to the server.
-  //Server: store data into the database.
 
   handleClick(e) {
     e.preventDefault()
@@ -38,21 +35,55 @@ export default class OfficialCreateTownHall extends Component {
 
   render() {
     return (
-      <div className="jumbotron">
+      <div className="jumbotron rounded">
+        {!this.props.isLoggedIn?
+        <h6>Please login first.</h6> :
+        <h6>Thanks for logging in!</h6>
+        }
         <form>
           <fieldset>
-            <legend>Create a Town Hall:</legend>
-              Title: 
+            <h4>Reach out to the people in your community.</h4>
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">Title </span>
+              </div>
+              
               <input 
-              name='title'
+              className="rounded form-control"
+              placeholder="Title"
+              aria-label="Username" 
+              aria-describedby="basic-addon1"
+              value="Title"
+              name="title"
               type="text"
               value={this.state.title}
               onChange={e => this.handleChange(e)}/><br />
-            Email: <input type="text" /><br />
-            Open until: <input type="datetime-local" />
-            <button
+            </div>
+            <div className="input-group input-group-sm mb-3">
+            <div className="input-group-prepend">  
+            <span className="input-group-text" id="basic-addon1" >Email </span>
+            </div>
+            
+             <input 
+                type="text"   
+                className="rounded form-control"
+                placeholder="official@email.com"
+                aria-label="email" 
+                aria-describedby="basic-addon1"
+                /><br />
+             </div>
+             <div className="input-group mb-3 input-group-sm">
+             <div className="input-group-prepend">
+             <span className="input-group-text" id="basic-addon1">Open Until </span>
+             </div>
+            <input 
+            aria-describedby="basic-addon1"
+            className="rounded form-control" 
+            type="datetime-local" />
+           </div>
+            <button className="btn btn-light"
               onClick={this.handleClick}>
-              Submit Town Hall
+              Create Town Hall
             </button>
           </fieldset>
         </form>

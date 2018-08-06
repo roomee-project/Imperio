@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import fakeData from './fakeData.js';
+import { BrowserRouter as Link} from 'react-router-dom';
+
 
 //this is a helper stateless component
 // const Options = props => <select value={this.state.selected}>{props.open.map((hall, i) => <option key={i}>{hall}</option>)}</select>;
@@ -19,7 +21,7 @@ export default class UserCreateTownHall extends Component {
       selected: '',
       question: '',
       currentUser: 2,
-    }
+    };
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -30,6 +32,7 @@ export default class UserCreateTownHall extends Component {
   
   componentDidMount() {
     this.getTownHalls();
+
   }
 
   getTownHalls() {
@@ -43,6 +46,7 @@ export default class UserCreateTownHall extends Component {
   handleSubmit(e) {
     //send data to server
     //tell it that you are a user and send it your question and which town hall it is for
+    // console.log('yo')
     e.preventDefault();
     this.sendQuestion(this.state.question, this.state.selected)
   }
@@ -68,15 +72,22 @@ export default class UserCreateTownHall extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="jumbotron">
-
+      {!this.props.isLoggedIn?
+      <h6>Please login first.</h6> :
+      <h6>Thanks for logging in!</h6>
+    }
+      <h4>Contribute to a town hall. </h4>
+        <h6>Be active in your community.</h6>
         <form>
           <fieldset>
-            <legend>Ask a Town Hall:</legend>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+              </div>
               <select 
+                className="custom-select"
                 value={this.state.selected}
                 onChange={this.handleSelect}>
                 <option 
@@ -84,12 +95,14 @@ export default class UserCreateTownHall extends Component {
                 </option>
                 {this.state.townHalls.map((hall, i) => <option key={i}>{hall}</option>)}
               </select> <br/>
+              </div>
               <textarea 
+                className="form-control"
                 name="question"
-                placeholder="Enter a Question Here."
+                placeholder="Enter a question here."
                 value={this.state.question}
                 onChange={e => this.handleChange(e)}/><br/>
-            <button
+            <button className="btn btn-light"
               onClick={this.handleSubmit}
             >Submit Question</button>
           </fieldset>

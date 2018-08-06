@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
+
+
 export default class LoginForm extends Component {
 
   constructor(props) {
     super(props)
-  
+
     this.state = {
        isLoggedIn: false
     };
@@ -21,7 +23,7 @@ export default class LoginForm extends Component {
       this.setState({isLoggedIn: true})
     }
   }
-  
+
   setUsername(event) {
     this.setState({
       username: event.target.value
@@ -48,22 +50,34 @@ export default class LoginForm extends Component {
   render() {
     return (
 
-        <div className="container">
+        <div className="container jumbotron bg-white">
+          <div className="row justify-content-center align-items-center">
+            <div className="col-4 align-self-center">
+          <h4>Login</h4>
+          <div className="input-group mb-3">
           <input
+            className="rounded form-control"
             value={this.state.username}
             type="text"
             placeholder="username"
             onChange={this.setUsername} />
           <br></br>
+          </div>
+          <div className="input-group mb-3">
           <input
+            className="rounded form-control"
             value={this.state.password}
             type="text"
             placeholder="password"
             onChange={this.setPassword} />
           <br></br>
-          <button onClick={this.handleLogin}>login</button>
+          </div>
+          <button className="btn btn-light"  onClick={this.handleLogin}>Login</button>
+          <hr className="my-4"/>
           <div>
-            <a href="auth/google">Log in with Google</a>
+            <a className="btn btn-primary" href="auth/google">Log in with Google</a>
+          </div>
+          </div>
           </div>
         </div>
     )
