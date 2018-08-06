@@ -49,7 +49,7 @@ export default class LoginForm extends Component {
   }
   render() {
     return (
-
+      <div style={{height:'80vh'}}>
         <div className="container jumbotron bg-white">
           <div className="row justify-content-center align-items-center">
             <div className="col-4 align-self-center">
@@ -80,6 +80,7 @@ export default class LoginForm extends Component {
           </div>
           </div>
         </div>
+      </div>
     )
   }
 }

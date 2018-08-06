@@ -41,7 +41,8 @@ export default class ElectionInfo extends Component {
   render () {
     //input div below's data needs to chanage lat and long of googlemap view
     return(
-      <div className="container jumbotron bg-white">
+      <div style={{height:'80vh'}}>
+      <div className="container jumbotron bg-white h-100" >
         <div className="row justify-content-center align-items-center">
            <div className="align-self-center">
              <h4>Find out more about upcoming Elections</h4>
@@ -55,6 +56,7 @@ export default class ElectionInfo extends Component {
            </div>
          </div>
        </div>
+      </div>
       </div>
       )
   }
