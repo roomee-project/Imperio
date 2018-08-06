@@ -49,6 +49,7 @@ export default class ZipForm extends Component {
 
   render() {
     return (
+      <div style={{height:'80vh'}}>
       <div className="jumbotron">
         <h1 class="display-4"> Find your representatives </h1>
         <form style={{ display: "inline-block" }}>
@@ -94,6 +95,7 @@ export default class ZipForm extends Component {
         <div>
           <ListView data={this.state.data} />
         </div>
+      </div>
       </div>
     )
   }

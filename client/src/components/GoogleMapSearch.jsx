@@ -32,8 +32,9 @@ export default class LocationSearchInput extends React.Component {
  
   render() {
     return (
-      <div className="jumbotron bg-white ">
-      <div className="row justify-content-center align-items-center">
+      <div className="jumbotron bg-white">
+      
+      <div className="float-left overlap row justify-content-center align-items-center zindex-dropdown" >
       <PlacesAutocomplete
         value={this.state.address}
         onChange={this.handleChange}
@@ -48,7 +49,7 @@ export default class LocationSearchInput extends React.Component {
                 className: 'location-search-input form-control ds-input',
               })}
             />
-            <div className="autocomplete-dropdown-container ds-dropdown-menu">
+            <div className="autocomplete-dropdown-container ds-dropdown-menu zindex-dropdown">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
@@ -74,7 +75,8 @@ export default class LocationSearchInput extends React.Component {
         )}
       </PlacesAutocomplete>
       </div>
-      <GoogleMap lat={this.state.lat} lng={this.state.lng} address={this.state.address}/>
+      
+      <GoogleMap lat={this.state.lat} lng={this.state.lng} address={this.state.address} />
       </div>
     );
   }

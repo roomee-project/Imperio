@@ -45,7 +45,7 @@ class App extends React.Component {
             </div>
           </Router>
         </div>
-        <footer className="bg-primary text-white w-auto h-100 row justify-content-center align-items-center">
+        <footer className="bg-primary text-white w-auto row justify-content-center align-items-center navbar navbar-default">
           <p>© 2018 the roomee project edition</p>
         </footer>
       </section>
