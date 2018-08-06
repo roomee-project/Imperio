@@ -43,10 +43,10 @@ export default class ElectionInfo extends Component {
     return(
       <div className="container jumbotron bg-white">
         <div className="row justify-content-center align-items-center">
-           <div className="col-4 align-self-center">
+           <div className="align-self-center">
              <h4>Find out more about upcoming Elections</h4>
            <div className="input-group mb-3">
-             <input className="rounded form-control" value={this.state.address} placeholder="Enter Registered Voting Address" onChange={this.onChange} />
+             <input className="rounded form-control" value={this.state.address} placeholder="Address" onChange={this.onChange} />
            </div>
              <button className="btn btn-primary" onClick={this.search}>Search</button>
            <div>

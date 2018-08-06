@@ -8,6 +8,8 @@ const utils = require('./utils.js');
 const server = require('http').createServer(app);
 const socket = require('socket.io');
 const io = socket(server);
+const log = require('ololog');
+
 
 //Database Dependences Below
 const db = require('../db/users.js');
@@ -18,14 +20,17 @@ const apiHelpers = require('../lib/apiHelper.js');
 const dataHelpers = require('../lib/dataHelpers.js')
 const apiSearch = require('../lib/apiSearch.js');
 const apiSearch2 = require('../lib/apiSearch2.js');
-const config = require('../config/civic.js');
 const path = require("path");
+
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const PORT = process.env.PORT || 3000;
+
 /************************************************
 Passport Related (Below)
 ************************************************/
 
 app.use(session({
-  secret: config.SESSION_SECRET,
+  secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -36,7 +41,7 @@ const passportSetup = require('../config/passport-setup.js');
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser(config.SESSION_SECRET));
+app.use(cookieParser(SESSION_SECRET));
 
 /************************************************/
 
@@ -49,8 +54,6 @@ app.use(bodyParser.json()); // This should be adjusted towards the type of req.b
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const port = process.env.PORT || 3000;
-
 //*********live-chat ***********//
 io.on('connection', (client) => {
   console.log(client.id);
@@ -60,8 +63,8 @@ io.on('connection', (client) => {
     io.emit('receive_message', data);
   })
 });
- server.listen(port, () => {
-  console.log(`server listening from ${port}!`)
+ server.listen(PORT, () => {
+  console.log(`server listening from ${PORT}!`)
 });
 // ////******route requests*********///
 
@@ -91,17 +94,13 @@ app.post('/reps', (req, res, next) => {
 });
 
 app.get('/voterinfo', (req, res, next) => {
-  // console.log("Get to API", req.query.address);
-  // console.log("Get to API", req.param('address'));
-  const address = req.param('address');
+  const address = req.query.address;
 
-  apiSearch2.searchByAddress(address, (response) => {
-    if (response.error) {
-      res.send(response.error);
+  apiSearch2.searchByAddress(address, (err, response) => {
+    if (err) {
+      res.send(204, response);
     } else {
-      res.status(201);
-      console.log(response);
-      res.send(response);
+      res.send(201, response);
     }
   });
 });
