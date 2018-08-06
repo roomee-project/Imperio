@@ -51,7 +51,7 @@ export default class ZipForm extends Component {
     return (
       <div style={{height:'80vh'}}>
       <div className="jumbotron">
-        <h1 class="display-4"> Find your representatives </h1>
+        <h1 class="display-4"> Find Local Representatives </h1>
         <form style={{ display: "inline-block" }}>
           <input
             autoFocus="true"
