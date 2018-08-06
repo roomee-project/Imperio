@@ -45,7 +45,7 @@ export default class ElectionInfo extends Component {
       <div className="container jumbotron bg-white h-100" >
         <div className="row justify-content-center align-items-center">
            <div className="align-self-center">
-             <h4>Find out more about upcoming Elections</h4>
+             <h4>Find Out More About Upcoming Elections</h4>
            <div className="input-group mb-3">
              <input className="rounded form-control" value={this.state.address} placeholder="Address" onChange={this.onChange} />
            </div>
