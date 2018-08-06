@@ -20,11 +20,7 @@ const apiSearch = require('../lib/apiSearch.js');
 const apiSearch2 = require('../lib/apiSearch2.js');
 const path = require("path");
 
-var config;
-if (!process.env.SESSION_SECRET) {
-  config = require('../config/civic.js');
-}
-const SESSION_SECRET = process.env.SESSION_SECRET || config.SESSION_SECRET
+const SESSION_SECRET = process.env.SESSION_SECRET;
 const PORT = process.env.PORT || 3000;
 
 /************************************************

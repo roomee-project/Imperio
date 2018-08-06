@@ -2,11 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import {geocodeByAddress,getLatLng} from 'react-places-autocomplete';
 
-var API_KEY;
-if (!process.env.MAPKEY) {
-  API_KEY = require('../../../config/map.js');
-}
-const MAPKEY = process.env.MAPKEY || API_KEY.MAPKEY;
+const MAPKEY = process.env.MAPKEY;
 
 const Pin = ({ text }) => (
   <div
