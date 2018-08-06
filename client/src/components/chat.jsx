@@ -128,7 +128,7 @@ class Chat extends Component {
                       {this.state.messages.map(message => {
                           return (
                               <div>
-                                  <strong>{message.author}:</strong> {message.message}
+                                  <strong>{'anon'+Math.floor(Math.random()*10)+1}:</strong> {message.message}
                               </div>
                           )
                       })}
